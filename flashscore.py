@@ -41,13 +41,14 @@ keyWord1 = " "
 linkBasic = " "
 linkAdditionally = [ ]
 linkAdditionally1 = " "
-
+bigDopFoto  = " "
+smallDopFoto = " "
 
 
 def parser(id):
     driver = undetected_chromedriver.Chrome()
     
-    global name, price,priceSkidka,nds,KomercialType,brendItem,typeItem,obiem,countItem,femal,classop,ManufacturerСountry,articul,width,linkUrl,hidth,anot,dlina,keyWord,linkUrldop,aromaClass,Sostav,keyWord1,linkUrldop1,linkBasic,linkAdditionally,linkAdditionally1     
+    global name, price,priceSkidka,nds,KomercialType,brendItem,typeItem,obiem,countItem,femal,classop,ManufacturerСountry,articul,width,linkUrl,hidth,anot,dlina,keyWord,linkUrldop,aromaClass,Sostav,keyWord1,linkUrldop1,linkBasic,linkAdditionally,linkAdditionally1,bigDopFoto,smallDopFoto     
     
     time.sleep(1)
     # переход  на сайт  ozon
@@ -64,8 +65,6 @@ def parser(id):
     #лупа для продолжения поиска
 
 
-    #lupa  =  driver.find_element(By.XPATH,'//button[@class = "x5-a1 x5-f0"]')
-    #header-search-go
     lupa  =  driver.find_element(By.XPATH,'//button[@type = "submit"]')
     time.sleep(1)
     lupa.click()
@@ -181,35 +180,204 @@ def parser(id):
 
     #url ссылка на картинку
 
-
+    linkUrldop = [ ]
     try:
 
         linkUrl = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
-
-        
-        linkUrl = linkUrl
+        if "video" in linkUrl:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "1"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            linkUrl = bigDopFoto
+            linkUrl = linkUrl
+        else:
+            linkUrl = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            linkUrl = linkUrl    
         print(linkUrl)
     except:
         linkUrl = ''
         print('элемент LinkURL не найден')
- 
- 
-    #url ссылка на доп картинку
+    
     try:
-        #driver.find_element(By.XPATH,'//div[@data-index = "2"]/child::div/child::img').get_attribute("src")
-        linkUrldop.append(driver.find_element(By.XPATH,'//div[@data-index = "0"]//child::img').get_attribute("src"))
-        linkUrldop.append(driver.find_element(By.XPATH,'//div[@data-index = "1"]//child::img').get_attribute("src"))
-        linkUrldop.append(driver.find_element(By.XPATH,'//div[@data-index = "2"]//child::img').get_attribute("src"))
-        #linkUrldop.append(driver.find_element(By.XPATH,'//div[@data-index = "3"]//child::img').get_attribute("src"))
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "0"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            
+            if linkUrl == bigDopFoto:
+                print('дополнительное фото совпадает с главным')
+                pass
+            else:
+                linkUrldop.append(bigDopFoto)
+                print(bigDopFoto)
+        except:
+            pass
 
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "1"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            
+            if linkUrl == bigDopFoto:
+                print('дополнительное фото совпадает с главным')
+                pass
+            else:
+                linkUrldop.append(bigDopFoto)
+                print(bigDopFoto)
+        except:
+            pass
+
+        try:    
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "2"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            if linkUrl == bigDopFoto:
+                print('дополнительное фото совпадает с главным')
+                pass
+            else:
+                linkUrldop.append(bigDopFoto)
+                print(bigDopFoto)
+        except:
+            pass
+
+
+        try:   
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "3"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass    
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "4"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+        
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "5"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+        
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "6"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+    
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "7"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "8"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "9"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+        
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "10"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "11"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "12"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "13"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "14"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "15"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "16"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "17"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+
+
+        try:
+            smallDopFoto = driver.find_element(By.XPATH,'//div[@data-index = "18"]//child::img').click()
+            bigDopFoto = driver.find_element(By.XPATH,'//img[@fetchpriority = "high"]').get_attribute("src")
+            print(bigDopFoto)
+            linkUrldop.append(bigDopFoto)
+        except:
+            pass
+        
+        print(linkUrldop)
+        #linkUrldop.append(bigDopFoto)
         linkUrldop1 = ",".join(linkUrldop)
         linkUrldop1 = linkUrldop1.replace(",",";")
-        
-        print(linkUrldop1)   
-        
+            
+        print(linkUrldop1)
     except:
         linkUrldop = ''
-        print('элемент linkUrldop не найден')
+        print('элемент linkUrldop не найден')   
+
+
 
     #SerialNumber
     #SerialNumber = driver.find_element(By.XPATH,"//span[text() = 'Тип']/following::dd[1]")
@@ -229,7 +397,7 @@ def parser(id):
     except:
         brendItem = ''
         print('элемент brendItem не найден')          
-    time.sleep(45)
+    time.sleep(1)
 
     #тип  товара
     #/td/span[text() = 'Данные2']/following::td[1]/span
@@ -374,11 +542,12 @@ def addFoto():
 
 # берем токен  из  приложения в яндекс почты
     global linkUrldop,linkUrldop1,linkBasic,linkAdditionally,linkAdditionally1  
-
+    linkAdditionally1 = " "
+    linkAdditionally = [ ]
     y = yadisk.YaDisk(token = "y0_AgAAAABp60i-AAmx3gAAAADgyo-R_zLb-FsxRl6DrndxQeRW6ELfd-8")
 
 
-    print(y.check_token())
+    print('token = ',y.check_token())
     try:
         if y.mkdir("/image"):
             print('папка существует')
@@ -394,15 +563,17 @@ def addFoto():
 
     res = re.search('\w*\.jpg$',linkUrl)
     result = res.group(0)
+    
     try:
         img = urllib.request.urlretrieve(linkUrl,f"C:\\ozon1\\image1\\{result}")
     except:
         print('файл  уже существует')    
+    '''
     try: 
         y.upload(f"C:\\ozon1\\image1\\{result}",f"/image/{result}")
     except:
         print('файл уже существует')
-
+'''
     try: 
         y.upload(f"C:\\ozon1\\image1\\{result}",f"/image/{result}")
         publishLinkDisk = y.publish(f"/image/{result}")
@@ -416,31 +587,40 @@ def addFoto():
         linkBasic = y.get_meta(path).public_url
         print(linkBasic)
     linkBasic = linkBasic   
+    
+    
     for i in linkUrldop:
         res = re.search('\w*\.jpg$',i)
         result = res.group(0)
-        try:
-            img = urllib.request.urlretrieve(i,f"C:\\ozon1\\image1\\{result}")
-        except:
-            print('файл  уже существует')    
+        print(result)
+        if result != "cover.jpg":
+            try:
+                img = urllib.request.urlretrieve(i,f"C:\\ozon1\\image1\\{result}")
+            except:
+                print('файл  уже существует')    
 
-        try: 
-            y.upload(f"C:\\ozon1\\image1\\{result}",f"/image/{result}")
-            publishLinkDisk = y.publish(f"/image/{result}")
-            path = f"/image/{result}"
-            linkAdditionally.append(y.get_meta(path).public_url)
-            
-            
-        except:
-            print('файл уже существует')
-            path = f"/image/{result}"
-            linkAdditionally.append(y.get_meta(path).public_url)
-            
+            try: 
+                y.upload(f"C:\\ozon1\\image1\\{result}",f"/image/{result}")
+                publishLinkDisk = y.publish(f"/image/{result}")
+                path = f"/image/{result}"
+                linkAdditionally.append(y.get_meta(path).public_url)
+                #print(linkAdditionally)
+                #linkAdditionally = linkAdditionally
+                
+            except:
+                print('файл уже существует')
+                path = f"/image/{result}"
+                linkAdditionally.append(y.get_meta(path).public_url)
+                #print(linkAdditionally)
+                #linkAdditionally = linkAdditionally
+        else:
+            pass        
+        #print(linkAdditionally)   
    
-        linkAdditionally1 = ",".join(linkAdditionally)
-        linkAdditionally1 = linkAdditionally1.replace(",",";")
-        print(linkAdditionally1)
-        linkAdditionally1 = linkAdditionally1
+    linkAdditionally1 = ",".join(linkAdditionally)
+    linkAdditionally1 = linkAdditionally1.replace(",",";")
+    print(linkAdditionally1)
+    linkAdditionally1 = linkAdditionally1
 # функция записывающая в файл xlx  данные спарсенные с ozon
 
 
@@ -529,4 +709,7 @@ def get_count(r):
     
     return count           
  
-id = 154369096
+#id = 303903410
+#parser(id)
+        
+#addFoto()

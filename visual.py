@@ -7,9 +7,9 @@ from flashscore import parser,get_str_number,get_count,OpenPixx,addFoto
 import pyperclip
 '''
 
-    
+  303903410#c видео  
    154369096
-   
+   267911248 c dbltj 2
 215973958
 646065674
 
@@ -44,7 +44,10 @@ def func_parce(event):
 
     for id in listId:
         parser(id)
+        
         addFoto()
+
+        
         file ="C:\\ozon1\\Парфюмерия.xlsx"
         r=get_str_number(file)
         count=get_count(r)
