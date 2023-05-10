@@ -3,25 +3,29 @@ from tkinter import ttk
 import re
 #import os
 #import undetected_chromedriver 
-from flashscore import parser,get_str_number,get_count,OpenPixx,addFoto
+from flashscore import parser,get_str_number,get_count,OpenPixx,addFoto,countId
 import pyperclip
+import traceback
 '''
-
   303903410#c видео  
    154369096
    267911248 c dbltj 2
 215973958
 646065674
-
-
 829002092
 724581115
 825952201
 154369096
 215973958
+901475097
+215973958
+646065674
+829002092
+724581115
+825952201
+154369096
+215973958 
 
-
-875752810
      '''
 def bufer(event):
     q = pyperclip.paste()
@@ -38,13 +42,38 @@ def func_parce(event):
     getText=e1.get("1.0",'end-1c')
     listId = re.findall('\d+', getText)
     print(listId)
-    print(type(listId))
+    #print(type(listId))
 
-    
+    i=0
 
     for id in listId:
-        parser(id)
         
+         
+        try:
+            parser(id)
+            print('ТЕКУЩИЙ ID :',id)
+            try:
+                i=i+1
+
+                ostatok = len(listId) -i
+                if ostatok > 0: 
+                    print('ОСТАЛОСЬ id', ostatok,'из ',len(listId))
+                
+                    
+                else:
+                    print('КОНЕЦ id')    
+            except:
+                pass
+                
+        except :
+            pass
+            print('СКРИПТ ЗАВИС ,'+ id)
+            
+        
+  
+
+ 
+    
         addFoto()
 
         
@@ -56,9 +85,9 @@ def func_parce(event):
         except:
             print('Проверьте: 1)Закрыт ли файл xlsx, при записи он должен быть закрыт.2) Файл должен находиться по пути C:\\ozon1\\Парфюмерия.xlsx 3) имя файла должно  быть Парфюмерия.xlsx  ')    
 
-
+        
    
-    return 1
+   
 #окно класс Tk
 root = Tk() 
 root.title("Парсер")
@@ -93,4 +122,3 @@ btn.bind("<Button-1>", func_parce)
 
 #show_message()
 root.mainloop()
-
